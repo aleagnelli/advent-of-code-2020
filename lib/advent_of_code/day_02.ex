@@ -4,7 +4,6 @@ defmodule AdventOfCode.Day02 do
       2
   """
   def part1(passwords) do
-    # passwords |> Enum.count(fn ({k,v}) -> IO.puts(k <> " " <> v) end)
     passwords |> Enum.count(fn {k, v} -> valid_password?(k, v) end)
   end
 
