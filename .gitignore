@@ -25,3 +25,6 @@ advent_of_code-*.tar
 
 # Temporary files for e.g. tests
 /tmp
+
+
+.vscode
