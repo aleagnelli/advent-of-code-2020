@@ -49,16 +49,15 @@ defmodule AdventOfCode.Day09 do
     |> elem(1)
   end
 
-  defp check_stack(stack, sum_stack, new_el, searched) do
-    if sum_stack + new_el == searched do
-      {:found, stack ++ [new_el], sum_stack + new_el}
-    else
-      if sum_stack + new_el > searched do
-        new_stack = tl(stack)
-        check_stack(new_stack, Enum.sum(new_stack), new_el, searched)
-      else
-        {:not_found, stack ++ [new_el], sum_stack + new_el}
-      end
-    end
+  defp check_stack(stack, sum_stack, new_el, searched) when sum_stack + new_el == searched,
+    do: {:found, stack ++ [new_el], sum_stack + new_el}
+
+  defp check_stack(stack, sum_stack, new_el, searched) when sum_stack + new_el > searched do
+    new_stack = tl(stack)
+    # reduce the stack until it's lower than the searched value
+    check_stack(new_stack, Enum.sum(new_stack), new_el, searched)
   end
+
+  defp check_stack(stack, sum_stack, new_el, _searched),
+    do: {:not_found, stack ++ [new_el], sum_stack + new_el}
 end
