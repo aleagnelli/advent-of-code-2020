@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 day=$(printf "%02d" "${1}")
-#touch "lib/advent_of_code/day_${day}.ex"
 cat << EOF > "lib/advent_of_code/day_${day}.ex"
 defmodule AdventOfCode.Day${day} do
   @doc """
