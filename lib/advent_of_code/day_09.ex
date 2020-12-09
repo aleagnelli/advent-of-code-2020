@@ -34,30 +34,20 @@ defmodule AdventOfCode.Day09 do
   end
 
   defp find_contigous_set(list, searched) do
-    Enum.reduce(list, {:searching, [], 0}, fn el, acc ->
-      case acc do
-        {:searching, stack, sum_stack} ->
-          case check_stack(stack, sum_stack, el, searched) do
-            {:found, s, ss} -> {:end, s, ss}
-            {:not_found, s, ss} -> {:searching, s, ss}
-          end
-
-        {:end, stack, sum} ->
-          {:end, stack, sum}
-      end
+    list
+    |> Enum.reduce_while({[], 0}, fn el, {window, sum_w} ->
+      check_window(window ++ [el], sum_w + el, searched)
     end)
-    |> elem(1)
+    |> elem(0)
   end
 
-  defp check_stack(stack, sum_stack, new_el, searched) when sum_stack + new_el == searched,
-    do: {:found, stack ++ [new_el], sum_stack + new_el}
+  defp check_window(window, sum_w, searched) when sum_w == searched, do: {:halt, {window, sum_w}}
 
-  defp check_stack(stack, sum_stack, new_el, searched) when sum_stack + new_el > searched do
-    new_stack = tl(stack)
-    # reduce the stack until it's lower than the searched value
-    check_stack(new_stack, Enum.sum(new_stack), new_el, searched)
+  defp check_window(window, sum_w, searched) when sum_w > searched do
+    new_window = tl(window)
+    # reduce the window until it's lower than the searched value
+    check_window(new_window, sum_w - hd(window), searched)
   end
 
-  defp check_stack(stack, sum_stack, new_el, _searched),
-    do: {:not_found, stack ++ [new_el], sum_stack + new_el}
+  defp check_window(window, sum_w, _searched), do: {:cont, {window, sum_w}}
 end
