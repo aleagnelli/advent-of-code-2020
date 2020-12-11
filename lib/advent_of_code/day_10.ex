@@ -29,10 +29,10 @@ defmodule AdventOfCode.Day10 do
     count_ways(jolts_graph, 0, pid)
   end
 
-  def build_graph(jolts, graph \\ %{})
-  def build_graph([], graph), do: graph
+  defp build_graph(jolts, graph \\ %{})
+  defp build_graph([], graph), do: graph
 
-  def build_graph([jolt | remaining], graph) do
+  defp build_graph([jolt | remaining], graph) do
     children = remaining |> Enum.take_while(&(&1 <= jolt + 3))
     build_graph(remaining, Map.put(graph, jolt, children))
   end
