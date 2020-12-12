@@ -176,10 +176,10 @@ defmodule AdventOfCode.Day11 do
   defp find_first_in_sight(seats, {row, col}, dir = {r_dir, c_dir}) do
     coordinates = {row + r_dir, col + c_dir}
 
-    if not floor?(Map.get(seats, coordinates, "L")) do
-      coordinates
-    else
+    if floor?(Map.get(seats, coordinates, "L")) do
       find_first_in_sight(seats, coordinates, dir)
+    else
+      coordinates
     end
   end
 
