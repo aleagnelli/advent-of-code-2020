@@ -48,22 +48,6 @@ defmodule AdventOfCode.Day15 do
     play_until(new_state, new_number, this_turn, number_of_turns)
   end
 
-  @doc """
-      iex> AdventOfCode.Day15.part2([0, 3, 6])
-      175594
-      iex> AdventOfCode.Day15.part2([1, 3, 2])
-      2578
-      iex> AdventOfCode.Day15.part2([2, 1, 3])
-      3544142
-      iex> AdventOfCode.Day15.part2([1, 2, 3])
-      261214
-      iex> AdventOfCode.Day15.part2([2, 3, 1])
-      6895259
-      iex> AdventOfCode.Day15.part2([3, 2, 1])
-      18
-      iex> AdventOfCode.Day15.part2([3, 1, 2])
-      362
-  """
   def part2(input) do
     elves_game(input, 30_000_000)
   end
