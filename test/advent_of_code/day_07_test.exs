@@ -1,5 +1,5 @@
 defmodule Day07Test do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest AdventOfCode.Day07
 
   test "part 1" do

@@ -25,7 +25,7 @@ EOF
 touch "priv/day_${day}.txt"
 cat << EOF > "test/advent_of_code/day_${day}_test.exs"
 defmodule Day${day}Test do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest AdventOfCode.Day${day}
 
   test "part 1" do
