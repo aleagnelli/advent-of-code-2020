@@ -9,9 +9,9 @@ defmodule Day17Test do
   end
 
   test "part 2" do
-   input = get_resource()
-   res = AdventOfCode.Day17.part2(input)
-   assert res == 1868
+    input = get_resource()
+    res = AdventOfCode.Day17.part2(input)
+    assert res == 1868
   end
 
   def get_resource() do
