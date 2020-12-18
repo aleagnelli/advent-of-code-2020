@@ -122,9 +122,9 @@ defmodule AdventOfCode.Day18 do
 
       "*" ->
         {lit, rem} = parse_literal_2(remaining)
-        {right, rem} = consume_plus(lit, rem)
+        {right, rem} = parse_expression_2(rem, lit)
         operation = {:*, left, right}
-        parse_expression_2(rem, operation)
+        {operation, rem}
 
       "(" ->
         parse_expression_2(remaining, left)
@@ -141,13 +141,6 @@ defmodule AdventOfCode.Day18 do
     {right, rem} = parse_literal_2(rem)
     {{op, left, right}, rem}
   end
-
-  defp consume_plus(left, ["+" | rem]) do
-    {op, rem} = build_operation_2(left, :+, rem)
-    consume_plus(op, rem)
-  end
-
-  defp consume_plus(left, rem), do: {left, rem}
 
   defp parse_expression_2([current | remaining]) when current == "(" do
     {ast, rem} = parse_expression_2(remaining)
