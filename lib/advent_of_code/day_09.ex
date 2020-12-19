@@ -12,7 +12,7 @@ defmodule AdventOfCode.Day09 do
 
   def find_error(preamble_part, [head | tail]) do
     exists_sum? =
-      Utils.combinations(preamble_part, 2)
+      AdventOfCode.Utils.combinations(preamble_part, 2)
       |> Enum.any?(fn [a | [b]] -> a + b == head end)
 
     if exists_sum? do

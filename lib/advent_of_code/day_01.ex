@@ -4,7 +4,7 @@ defmodule AdventOfCode.Day01 do
       514579
   """
   def part1(expenses) do
-    Utils.combinations(expenses, 2)
+    AdventOfCode.Utils.combinations(expenses, 2)
     |> Enum.filter(fn [a | [b]] -> a + b == 2020 end)
     |> Enum.map(fn [a | [b]] -> a * b end)
     |> hd
@@ -15,7 +15,7 @@ defmodule AdventOfCode.Day01 do
       241861950
   """
   def part2(expenses) do
-    Utils.combinations(expenses, 3)
+    AdventOfCode.Utils.combinations(expenses, 3)
     |> Enum.filter(fn [a | [b | [c]]] -> a + b + c == 2020 end)
     |> Enum.map(fn [a | [b | [c]]] -> a * b * c end)
     |> hd
