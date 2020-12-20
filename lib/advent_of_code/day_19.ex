@@ -21,7 +21,8 @@ defmodule AdventOfCode.Day19 do
   def part1(input) do
     execute(input, "0")
   end
-  def execute(input, starting_rule) do
+
+  defp execute(input, starting_rule) do
     {rules, messages} = input |> parse_input()
     count_valid_messages(messages, rules, starting_rule)
   end
@@ -51,7 +52,7 @@ defmodule AdventOfCode.Day19 do
   defp count_valid_messages(messages, rules, starting_rule),
     do: messages |> Enum.map(&match_message(&1, rules, starting_rule)) |> Enum.count(&(&1 == ""))
 
-  defp match_message(message, rules, current ) do
+  defp match_message(message, rules, current) do
     case rules[current] do
       [[c]] when c in ["a", "b"] ->
         consume_char(message, c)
