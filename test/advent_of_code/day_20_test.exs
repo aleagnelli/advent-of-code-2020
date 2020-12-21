@@ -115,7 +115,6 @@ defmodule Day20Test do
 
     res = AdventOfCode.Day20.part1(input)
     assert res == 20_899_048_083_289
-
   end
 
   test "part 1" do

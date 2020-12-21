@@ -47,5 +47,4 @@ defmodule AdventOfCode.Day20 do
     |> Enum.filter(fn {_n, count} -> count == 4 end)
     |> Enum.map(&elem(&1, 0))
   end
-
 end
