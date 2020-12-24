@@ -45,10 +45,10 @@ defmodule AdventOfCode.Day23 do
   defp get_destination(destination, slice, cup_state) do
     attempt = if destination != 1, do: destination - 1, else: map_size(cup_state)
 
-    if      attempt in slice  do
-     get_destination(attempt, slice, cup_state)
+    if attempt in slice do
+      get_destination(attempt, slice, cup_state)
     else
-       attempt
+      attempt
     end
   end
 
