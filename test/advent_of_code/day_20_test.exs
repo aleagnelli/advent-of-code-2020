@@ -115,12 +115,20 @@ defmodule Day20Test do
 
     res = AdventOfCode.Day20.part1(input)
     assert res == 20_899_048_083_289
+    res = AdventOfCode.Day20.part2(input)
+    assert res == 273
   end
 
   test "part 1" do
     input = get_resource()
     res = AdventOfCode.Day20.part1(input)
     assert res == 111_936_085_519_519
+  end
+
+  test "part 2" do
+    input = get_resource()
+    res = AdventOfCode.Day20.part2(input)
+    assert res == 1792
   end
 
   def get_resource() do
